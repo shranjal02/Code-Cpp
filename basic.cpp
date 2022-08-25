@@ -5,61 +5,31 @@ class Node{
     public:
 
     int data;
-    Node* left;
-    Node* right;
-    
-    // constructor
-    Node(int d){
-        this -> data = d;
-        this -> left = NULL;
-        this -> right = NULL;
+    Node* next;
+
+   // constructor
+    Node(int data){
+       this -> data = data;
+       this -> next = NULL;
+    }
+    void insert(Node* & head, int data){
+       // create node
+       Node* temp = new Node(data);
+       temp -> next = head;
+       head = temp; 
     }
 
 };
-    Node* traverseLink(Node* root){
 
-        cout <<"Enter the data: " << endl;
-         int data;
-         cin >> data;
-         root = new Node(data);
-
-         if(data == -1){
-            return NULL;
-         }
-         // enter left
-         cout << " Enter for left " << data << endl;
-         root -> left = traverseLink(root -> left);
-         // enter right
-         cout << "Enter for right " << data << endl;
-         root -> right = traverseLink(root -> right);
-         return root;
-    }
-    
-    void levelOrderTraversal(Node* root){
-        queue<Node*> q;
-        q.push(root);
-        while(!q.empty()){
-            Node* temp = q.front();
-            cout << temp -> data << endl;
-            q.pop();
-            if(temp -> left){
-                q.push(temp -> left);
-
-            }
-             if(temp -> right){
-                q.push(temp -> right);
-                
-            }
-
-        }
-        
-
-    }
 
 int main(){
-    Node* root = NULL;
-    root = traverseLink(root);
-    levelOrderTraversal(root);
+Node* node1 = new Node(10);
+cout << node1 -> data << endl;
+cout << node1 -> next << endl;
 
-    return 0;
+
+
+return 0;
 }
+
+
